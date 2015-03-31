@@ -85,8 +85,10 @@ app.get('/meleors/machinetree', function(req, res) {
                     .populate('machines')
                     .exec(function(err, d) {
                         count --;
-                        if (err || d.length == 0) return;
-                        s.modules = d;
+
+                        if (!err && d.length > 0) {
+                            s.modules = d;
+                        }
 
                         if (count == 0) {
                             ret = JSON.parse(JSON.stringify(ret));
