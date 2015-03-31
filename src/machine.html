@@ -1,0 +1,72 @@
+
+<div class="container manage-container" ng-controller="MachineCtl">
+    <div class="" name="department" id="department">
+        <form name="departmentForm" id="departmentForm" class="form-horizontal">
+            <div class="span4 control-group">
+                <label class="control-label" for="ip">内网IP</label>
+                <div class="controls">
+                    <input type="text"
+                           id="ip" required
+                           ng-model="obj.ip"
+                           placeholder="IP地址"
+                           value="{{obj.ip}}">
+                </div>
+            </div>
+            <div class="span4 control-group">
+                <label class="control-label" for="room">机房</label>
+                <div class="controls">
+                    <input type="text"
+                           id="room" required
+                           ng-model="obj.room"
+                           placeholder="机房"
+                           value="{{obj.room}}">
+                </div>
+            </div>
+            <div class="span4 control-group">
+                <label class="control-label" for="public_ip">公网IP</label>
+                <div class="controls">
+                    <input type="text"
+                           id="public_ip"
+                           ng-model="obj.public_ip"
+                           placeholder="公网IP"
+                           value="{{obj.room}}">
+                </div>
+            </div>
+            <div class="span4 control-group">
+                <label class="control-label" for="serial_number">机器序列号</label>
+                <div class="controls">
+                    <input type="text" required
+                           id="serial_number"
+                           ng-model="obj.serial_number"
+                           placeholder="机器序列号"
+                           value="{{obj.room}}">
+                </div>
+            </div>
+            <div class="span5 control-group">
+                <label class="control-label" for="cabinet_number">机柜号</label>
+                <div class="controls">
+                    <input type="text"
+                           id="cabinet_number"
+                           ng-model="obj.cabinet_number"
+                           placeholder="机柜号"
+                           value="{{obj.room}}">
+                </div>
+            </div>
+            <div class="span2">
+                <div class="btn-group">
+                    <btn ng-click="addRecord(obj)" class="btn" ng-if="isAdd()">
+                        <i class="icon-plus"></i>增加</btn>
+                    <btn ng-click="updateRecord(obj)" class="btn" ng-if="isUpdate()">
+                        <i class="icon-list-alt"></i>更新</btn>
+                    <btn ng-click="search(obj)" class="btn">
+                        <i class="icon-search"></i>搜索</btn>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container records-container">
+        <div class="" name="records" id="records" manage-records>
+
+        </div>
+    </div>
+</div>

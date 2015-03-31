@@ -31,6 +31,7 @@ require.config({
     bootstrap:                '../vendor/bootstrap/bootstrap',
 
     jquery:                   '../vendor/jquery/jquery-2.1.1.min',
+    select2:                   '../vendor/select2',
 
     'extend-jquery':          'components/extend-jquery',
 

@@ -1,0 +1,61 @@
+<div class="container manage-container" ng-controller="EmployeeCtl">
+    <div class="">
+        <form name="form" id="form" class="form-horizontal">
+            <div class="span4 control-group">
+                <label class="control-label" for="name">名称</label>
+                <div class="controls">
+                    <input type="text"
+                           id="name" required
+                           ng-model="obj.name"
+                           placeholder="名称"
+                           value="{{obj.name}}">
+                </div>
+            </div>
+            <div class="span4 control-group">
+                <label class="control-label" for="position">职位</label>
+                <div class="controls">
+                    <input type="text"
+                           id="position"
+                           ng-model="obj.position"
+                           placeholder="职位"
+                           value="{{obj.position}}">
+                </div>
+            </div>
+            <div class="span4 control-group">
+                <label class="control-label" for="email">邮件</label>
+                <div class="controls">
+                    <input type="email" required
+                           id="email"
+                           ng-model="obj.email"
+                           placeholder="邮件地址"
+                           value="{{obj.email}}">
+                </div>
+            </div>
+            <div class="span5 control-group">
+                <label class="control-label" for="phone">手机号码</label>
+                <div class="controls">
+                    <input type="text" minlength="11" maxlength="11"
+                           id="phone" required
+                           ng-model="obj.phone"
+                           placeholder="手机号码"
+                           value="{{obj.phone}}">
+                </div>
+            </div>
+            <div class="span2">
+                <div class="btn-group">
+                    <btn ng-click="addRecord(obj)" class="btn" ng-if="isAdd()">
+                        <i class="icon-plus"></i>增加</btn>
+                    <btn ng-click="updateRecord(obj)" class="btn" ng-if="isUpdate()">
+                        <i class="icon-list-alt"></i>更新</btn>
+                    <btn ng-click="search(obj)" class="btn">
+                        <i class="icon-search"></i>搜索</btn>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container records-container">
+        <div class="" name="records" id="records" manage-records>
+
+        </div>
+    </div>
+</div>

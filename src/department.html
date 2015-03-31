@@ -1,0 +1,33 @@
+
+<div class="container manage-container" ng-controller="DeptCtl">
+    <div class="" name="department" id="department">
+        <form name="departmentForm" id="departmentForm" class="form-horizontal">
+            <div class="span5 control-group">
+                <label class="control-label" for="name">名称</label>
+                <div class="controls">
+                    <input type="text" name="name"
+                           id="name" required="true"
+                           ng-model="obj.name"
+                           placeholder="部门名称"
+                           value="{{obj.name}}">
+                </div>
+            </div>
+
+            <div class="span2">
+                <div class="btn-group">
+                    <btn ng-click="addRecord(obj)" class="btn" ng-if="isAdd()">
+                        <i class="icon-plus"></i>增加</btn>
+                    <btn ng-click="updateRecord(obj)" class="btn" ng-if="isUpdate()">
+                        <i class="icon-list-alt"></i>更新</btn>
+                    <btn ng-click="search(obj)" class="btn">
+                        <i class="icon-search"></i>搜索</btn>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container records-container">
+        <div class="" name="records" id="records" manage-records>
+
+        </div>
+    </div>
+</div>

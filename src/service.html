@@ -1,0 +1,49 @@
+<div class="container manage-container" ng-controller="ServiceCtl">
+    <div class="">
+        <form name="form" id="form" class="form-horizontal">
+            <div class="span4 control-group">
+                <label class="control-label" for="department">部门</label>
+                <div class="controls">
+                    <select ng-model="obj.department" id="department" required
+                            ng-options="opt as opt.name for opt in department">
+                    </select>
+                </div>
+            </div>
+            <div class="span4 control-group">
+                <label class="control-label" for="name">服务名称</label>
+                <div class="controls">
+                    <input type="text"
+                           id="name" required
+                           ng-model="obj.name"
+                           placeholder="服务名称"
+                           value="{{obj.name}}">
+                </div>
+            </div>
+            <div class="span5 control-group">
+                <label class="control-label" for="env">环境</label>
+                <div class="controls">
+                    <input type="text" required
+                           id="env"
+                           ng-model="obj.env"
+                           placeholder="环境"
+                           value="{{obj.env}}">
+                </div>
+            </div>
+            <div class="span4">
+                <div class="btn-group">
+                    <btn ng-click="addRecord(obj)" class="btn" ng-if="isAdd()">
+                        <i class="icon-plus"></i>增加</btn>
+                    <btn ng-click="updateRecord(obj)" class="btn" ng-if="isUpdate()">
+                        <i class="icon-list-alt"></i>更新</btn>
+                    <btn ng-click="search(obj)" class="btn">
+                        <i class="icon-search"></i>搜索</btn>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container records-container">
+        <div class="" name="records" id="records" manage-records>
+
+        </div>
+    </div>
+</div>

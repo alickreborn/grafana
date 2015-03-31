@@ -5,5 +5,7 @@ define([
   './metricKeys',
   './graphiteImport',
   './inspectCtrl',
+  './menu',
+  './manage',
   './jsonEditorCtrl',
 ], function () {});

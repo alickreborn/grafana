@@ -1,0 +1,126 @@
+ul.tree-view-root, .tree-view-node > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 20px;
+    padding-top: 5px;
+    overflow: hidden;
+    width: 255px;
+    background-color: aliceblue;
+}
+
+.bar-shower {
+
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url("../img/glyphicons-halflings.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+}
+
+.menu-show {
+    left: -20px;
+}
+
+.menu-closed {
+    left: -275px;
+}
+
+.icon-chevron-up {
+    background-position: -288px -120px;
+}
+
+.icon-chevron-down {
+    background-position: -313px -119px;
+}
+
+.icon-chevron-left {
+    background-position: -432px -72px;
+}
+.icon-chevron-right {
+    background-position: -456px -72px;
+}
+.icon-plus {
+    background-position: -408px -96px;
+}
+.icon-trash {
+    background-position: -456px 0;
+}
+.icon-remove {
+    background-position: -312px 0;
+}
+.icon-edit {
+    background-position: -96px -72px;
+}
+.icon-list-alt {
+    background-position: -264px -24px;
+}
+.icon-search {
+    background-position: -48px 0;
+}
+.menu-tree-container {
+    position: absolute;
+    top: 50px;
+    z-index: 10;
+    box-sizing: border-box;
+    width: 290px;
+}
+
+ul.tree-view-root li, .tree-view-node > ul li {
+    padding-bottom: 12px
+}
+
+ul.tree-view-root label, .tree-view-node > ul label {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-bottom: 0;
+    line-height: 12px;
+    color: #248DDB;
+    font-size: x-small;
+}
+
+ul.tree-view-root input[type=checkbox], .tree-view-node > ul input[type=checkbox] {
+    vertical-align: bottom
+}
+
+ul.tree-view-root span, .tree-view-node > ul span {
+    vertical-align: bottom;
+    position: relative;
+    top: 3px
+}
+
+.bar-shower {
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    right: 0;
+    background-color: brown;
+    min-height: 38px;
+}
+
+.pull-middle {
+    top: 50%;
+}
+ul.tree-view-root .tree-view-node > ul {
+    display: none
+}
+
+ul.tree-view-root .tree-view-node.open > ul {
+    display: block
+}
+
+ul.tree-view-root .tree-view-leaf {
+    margin-left: 23px
+}
+
+input.ng-invalid.ng-touched {
+    background-color: #4F0A09;
+}

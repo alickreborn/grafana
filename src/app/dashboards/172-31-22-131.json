@@ -21,7 +21,7 @@
           "editable": true,
           "type": "text",
           "mode": "html",
-          "content": "<div class=\"text-center\" style=\"padding-top: 15px\">\n<img src=\"http://honey.hunantv.com/hunantv.imgotv/image/header/logo-index.png\"> \n</div>",
+          "content": "<div class=\"text-center\" style=\"padding-top: 15px\">\n<img src=\"img/logo_transparent_200x.png\"> \n</div>",
           "style": {},
           "title": "Welcome to",
           "links": []
@@ -183,7 +183,7 @@
       "showTitle": false
     },
     {
-      "title": "Welcome to Meleors",
+      "title": "Welcome to Grafana",
       "height": "210px",
       "collapse": false,
       "editable": true,
