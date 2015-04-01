@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
-mongoose.connect('mongodb://mongodedb.chinacloudapp.cn:27017/meleors');
+mongoose.connect('mongodb://mongodedb1.chinacloudapp.cn:27017/meleors');
 
 var DepartmentSchema = new Schema({
     name: String

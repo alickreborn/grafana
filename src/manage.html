@@ -28,38 +28,9 @@
 
 </head>
 
-<body ng-cloak ng-controller="GrafanaCtrl">
+<body >
 
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container" ng-controller="TabCtl">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <li ng-class="{active:isActive('/department')}">
-                        <a href="#department">部门管理</a>
-                    </li>
-                    <li ng-class="{active:isActive('/service')}">
-                        <a href="#service">服务管理</a>
-                    </li>
-                    <li ng-class="{active:isActive('/module')}">
-                        <a href="#module">模块管理</a>
-                    </li>
-                    <li ng-class="{active:isActive('/employee')}">
-                        <a href="#employee">人员管理</a>
-                    </li>
-                    <li ng-class="{active:isActive('/machine')}">
-                        <a href="#machine">机器管理</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+<div tab-nav></div>
 
 <div ng-view></div>
 

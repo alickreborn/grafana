@@ -183,7 +183,7 @@ app.get('/meleors/machinetree', function(req, res) {
 });
 
 app.get('/meleors/:collection', function (req, res) {
-    var q = req.body;
+    var q = req.query || req.body;
     var clazz = req._collectionClass;
     var promise = clazz.find(q);
 

@@ -80,17 +80,26 @@ define([
 
                 var records = [];
 
-                function refresh() {
-                    $http.get(serviceUrl)
+
+
+                function refresh(obj) {
+                    var url = serviceUrl;
+                    url += obj &&( '?' + $.param(refineObject(obj))) || '';
+
+                    $http.get(url)
                         .success(function(data) {
                             $scope.records = data;
                     });
                 }
 
                 function refineObject(obj) {
-                    if (! selects) return obj;
+                    // if (! selects) return obj;
 
                     _.each(obj, function(v, k) {
+                        if (!v) {
+                            delete obj[k];
+                            return;
+                        }
 
                         if (_.isArray(v)) {
                             for (var i in v) {
@@ -233,6 +242,8 @@ define([
                     $scope.obj = obj;
                     $scope.records = records;
 
+                    $scope.search = refresh;
+
                     initSelections();
                     refresh();
 
@@ -261,14 +272,22 @@ define([
             ['service', 'name', 'contacts', 'machines'],
             ['service', 'employee', 'machine']);
         makeController('EmployeeCtl', 'employee', ['name', 'position', 'email', 'phone']);
-        makeController('MachineCtl', 'machine', ['ip', 'room']);
+        makeController('MachineCtl', 'machine', ['ip', 'room', 'public_ip', 'serial_number', 'cabinet_number']);
 
         module.controller('TabCtl', ['$scope', '$route',
             function(_) {
                 var routes = ['machine', 'service', 'department', 'module', 'employee'];
-                if (location.pathname.indexOf('/manage.html') != -1 &&
-                    routes.indexOf(location.hash) == -1 ) {
-                    // location.hash='/machine.html';
+                if (location.pathname.indexOf('/manage.html') != -1 ) {
+                    var groups = /#\/([^\.]+)/.exec(location.hash);
+                    if (groups && routes.indexOf(groups[1]) > -1) {
+                        return;
+                    }
+                    console.log(routes);
+                    console.log(location.pathname);
+                    console.log(location.hash);
+
+                    location.hash='#/department';
+                    location.reload();
                 }
 
 

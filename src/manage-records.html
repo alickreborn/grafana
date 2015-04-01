@@ -6,9 +6,9 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="record in records">
+    <tr ng-repeat="record in records" ng-click="update(record)">
         <td ng-repeat="d in keys">{{getCellLabel(record, keys[$index])}}</td>
-        <td ng-click="update(record)">
+        <td>
             <a class="btn" ><i class="icon-edit"></i></a>
             <a class="btn btn-danger" confirm-click="remove(record)">
                 <i class="icon-trash"></i></a>

@@ -124,3 +124,7 @@ ul.tree-view-root .tree-view-leaf {
 input.ng-invalid.ng-touched {
     background-color: #4F0A09;
 }
+
+.navbar-inverse .navbar-inner {
+    background-color: #4F0A09;
+}
