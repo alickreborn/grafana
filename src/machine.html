@@ -52,16 +52,11 @@
                            value="{{obj.room}}">
                 </div>
             </div>
-            <div class="span2">
-                <div class="btn-group">
-                    <btn ng-click="addRecord(obj)" class="btn" ng-if="isAdd()">
-                        <i class="icon-plus"></i>增加</btn>
-                    <btn ng-click="updateRecord(obj)" class="btn" ng-if="isUpdate()">
-                        <i class="icon-list-alt"></i>更新</btn>
-                    <btn ng-click="search(obj)" class="btn">
-                        <i class="icon-search"></i>搜索</btn>
-                </div>
+
+            <div class="span2"
+                ng-include="'static/form-btns.html'">
             </div>
+
         </form>
     </div>
     <div class="container records-container">

@@ -7,6 +7,7 @@ var express = require('express')
     , app = express()
     , bodyParser = require('body-parser')
     , mongo = require('./lib/mongo')
+    , hasStatsServer = require('./lib/influxdb').hasServer
     , ipConfig = require('./app/config/default').ipConfig
     , defaultConfig = require('./app/config/default_config');
 
@@ -46,7 +47,48 @@ app.get('/app/dashboards/:ip', function(req, res) {
         return res.json(defaultConfig);
     }
 
-    res.json(ipConfig(ip));
+    function notfound() {
+        res.status(404).end();
+    }
+
+    function error() {
+        res.status(500).end();
+    }
+
+    function ok(ip) {
+        return res.json(ipConfig(ip));
+    }
+
+    mongo.Machine
+        .find()
+        .or([{ip: ip}, {public_ip: ip}, {serial_number: ip}])
+        .exec(function(err, ms) {
+            if (err) {
+                console.error(err);
+                return error();
+            }
+
+            if (!ms || ms.length === 0) {
+                return notfound();
+            }
+
+            var machine = ms[0];
+            if (hasStatsServer(machine.ip)) {
+                return ok(machine.ip);
+            }
+
+            if (hasStatsServer(machine.public_ip)) {
+                return ok(machine.public_ip);
+            }
+
+            if (hasStatsServer(machine.serial_number)) {
+                return ok(machine.serial_number);
+            }
+
+            return notfound();
+
+        })
+
 });
 
 app.get('/meleors/:collection/:id', function (req, res) {

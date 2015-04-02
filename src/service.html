@@ -5,7 +5,7 @@
                 <label class="control-label" for="department">部门</label>
                 <div class="controls">
                     <select ng-model="obj.department" id="department" required
-                            ng-options="opt as opt.name for opt in department">
+                            ng-options="opt as opt.name for opt in department track by opt._id">
                     </select>
                 </div>
             </div>
@@ -29,21 +29,11 @@
                            value="{{obj.env}}">
                 </div>
             </div>
-            <div class="span4">
-                <div class="btn-group">
-                    <btn ng-click="addRecord(obj)" class="btn" ng-if="isAdd()">
-                        <i class="icon-plus"></i>增加</btn>
-                    <btn ng-click="updateRecord(obj)" class="btn" ng-if="isUpdate()">
-                        <i class="icon-list-alt"></i>更新</btn>
-                    <btn ng-click="search(obj)" class="btn">
-                        <i class="icon-search"></i>搜索</btn>
-                </div>
-            </div>
+            <div form-buttons class="span2"></div>
         </form>
     </div>
     <div class="container records-container">
         <div class="" name="records" id="records" manage-records>
-
         </div>
     </div>
 </div>

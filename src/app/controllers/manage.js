@@ -76,7 +76,7 @@ define([
 
             return function($scope, $http) {
                 var keys = tkeys;
-                var obj = emptyObj();
+                var obj = null;
 
                 var records = [];
 
@@ -194,6 +194,11 @@ define([
 
                 };
 
+                $scope.reset = function() {
+                    is_add = true;
+                    $scope.obj = emptyObj();
+                }
+
                 function emptyObj() {
                     var obj = {};
                     $.each(keys, function(_, k) {
@@ -239,7 +244,7 @@ define([
 
                 function init() {
                     $scope.keys = keys;
-                    $scope.obj = obj;
+                    $scope.obj = emptyObj();
                     $scope.records = records;
 
                     $scope.search = refresh;
@@ -255,11 +260,7 @@ define([
             };
         };
 
-        function template() {
-            return {
-                templateUrl: 'manage-records.html'
-            };
-        }
+
 
         function makeController(ctlName, serviceName, keys, selects) {
             module.controller(ctlName,
@@ -289,9 +290,6 @@ define([
                     location.hash='#/department';
                     location.reload();
                 }
-
-
-        }]).directive('manageRecords', template);
-        $('ul li:first').trigger('click');
+        }]);
 
     });
