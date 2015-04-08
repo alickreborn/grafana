@@ -87,7 +87,7 @@ app.get('/app/dashboards/:ip', function(req, res) {
 
             return notfound();
 
-        })
+        });
 
 });
 

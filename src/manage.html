@@ -23,6 +23,20 @@
     <script>
         require(['app', 'jquery', 'select2'], function (app, $) {
             app.boot();
+
+                var routes = ['machine', 'service', 'department', 'module', 'employee'];
+                if (location.pathname.indexOf('/manage.html') != -1 ) {
+                    var groups = /#\/([^\.]+)/.exec(location.hash);
+                    if (groups && routes.indexOf(groups[1]) > -1) {
+                        return;
+                    }
+                    console.log(routes);
+                    console.log(location.pathname);
+                    console.log(location.hash);
+
+                    location.hash='#/department';
+                    location.reload();
+                }
         });
     </script>
 

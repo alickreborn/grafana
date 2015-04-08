@@ -180,7 +180,16 @@ define([
                 };
 
                 $scope.update = function(record) {
+                    if (record.contacts) {
+                        record.employee = record.contacts;
+                    }
+
+                    if (record.machines) {
+                        record.machine = record.machines;
+                    }
+
                     $scope.obj = record;
+                    deleyShowSelect();
                     is_add = false;
                 };
 
@@ -201,7 +210,20 @@ define([
 
                 function emptyObj() {
                     var obj = {};
+                    var hashScopedSelectsDefined = selects &&  // has selected defined.
+                        selects.length; // selects is array
+
+
                     $.each(keys, function(_, k) {
+                        var hashScopedSelectsValue = hashScopedSelectsDefined &&
+                            $scope[k]&& // scope has the selected defined.
+                            selects.indexOf(k) !== -1; // k is in selects
+
+                        if (hashScopedSelectsValue) {
+                            obj[k] = $scope[k][0];
+                            return;
+                        }
+
                         obj[k] = '';
                     });
 
@@ -251,13 +273,19 @@ define([
 
                     initSelections();
                     refresh();
-
-                    $('select.employee').select2();
-                    $('select.machine').select2();
+                    deleyShowSelect();
                 }
 
                 init();
             };
+
+            function deleyShowSelect() {
+                function show() {
+                    $('select.employee').select2();
+                    $('select.machine').select2();
+                }
+                setTimeout(show, 200);
+            }
         };
 
 
@@ -274,22 +302,4 @@ define([
             ['service', 'employee', 'machine']);
         makeController('EmployeeCtl', 'employee', ['name', 'position', 'email', 'phone']);
         makeController('MachineCtl', 'machine', ['ip', 'room', 'public_ip', 'serial_number', 'cabinet_number']);
-
-        module.controller('TabCtl', ['$scope', '$route',
-            function(_) {
-                var routes = ['machine', 'service', 'department', 'module', 'employee'];
-                if (location.pathname.indexOf('/manage.html') != -1 ) {
-                    var groups = /#\/([^\.]+)/.exec(location.hash);
-                    if (groups && routes.indexOf(groups[1]) > -1) {
-                        return;
-                    }
-                    console.log(routes);
-                    console.log(location.pathname);
-                    console.log(location.hash);
-
-                    location.hash='#/department';
-                    location.reload();
-                }
-        }]);
-
     });
